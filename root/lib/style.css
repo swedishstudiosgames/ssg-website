@@ -6,7 +6,7 @@ header{text-align:center;font-family:Arial,Helvetica,sans-serif;margin:auto;}
 #shdw{box-shadow:1px 1.5px #333;margin:auto;border:1px solid #101010;border-radius:0px 0px 28px 28px;width:80%;background-color:#222;}
 #shdw2{background-color:#444;box-shadow:1px 1.5px #333;margin:auto;width:80%;border:1px solid #101010;}
 #shdw3{background-color:#444;box-shadow:1px 1.5px #333;margin:auto;width:auto;border:1px solid #101010;text-align:center;}
-#shdw4{background-color:#eee;box-shadow:1px 1.5px #333;padding:50px;margin:auto;width:80%;border:1px solid #101010;border-radius:96px;text-align:center;align-items:center;display:grid;}
+#shdw4{background-color:#eee;box-shadow:1px 1.5px #333;padding:50px auto;margin:auto;width:80%;border:1px solid #101010;border-radius:96px;text-align:center;align-items:center;display:grid;}
 #bnrbg{height:78px;width:420px;}
 #tmptxt{text-align:center;}
 #nvbtn{height:20px;width:20px;}
