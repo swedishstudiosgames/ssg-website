@@ -1,11 +1,12 @@
 @charset "utf-8";
 @viewport{width:device-width;}
 @import url(“https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css”);
-body{background-color:#444;background:url(https://swedishstudiosgames.com/root/lib/assets/gfx/img/bnr/bgimg/bg.png) no-repeat;margin:0px 8px 8px 8px;}
+body{background-color:#444;background:url(https://officialssg.com/root/lib/assets/gfx/img/bnr/bgimg/bg.png) no-repeat;margin:0px 8px 8px 8px;}
 header{text-align:center;font-family:Arial,Helvetica,sans-serif;margin:auto;}
 #shdw{box-shadow:1px 1.5px #333;margin:auto;border:1px solid #101010;border-radius:0px 0px 28px 28px;width:80%;background-color:#222;}
 #shdw2{background-color:#444;box-shadow:1px 1.5px #333;margin:auto;width:80%;border:1px solid #101010;}
 #shdw3{background-color:#444;box-shadow:1px 1.5px #333;margin:auto;width:auto;border:1px solid #101010;text-align:center;}
+#shdw4{background-color:#999;box-shadow:1px 1.5px #333;margin:auto;width:80%;border:1px solid #101010;text-align:center;align-items:center;display:grid;}
 #bnrbg{height:78px;width:420px;}
 #tmptxt{text-align:center;}
 #nvbtn{height:20px;width:20px;}
