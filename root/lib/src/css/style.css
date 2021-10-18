@@ -1,5 +1,5 @@
 @charset "utf-8";
-@viewport{width:device-width;}
+@viewport{width:device-width;initial-scale:1.0;}
 @import url(“https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css”);
 body{font-family:'Poppings',sans-serif;background:radial-gradient(#fff,#111);margin:0px 8px 8px 8px;}
 header{text-align:center;font-family:Arial,Helvetica,sans-serif;margin:auto;}
