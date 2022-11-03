@@ -3,9 +3,9 @@
 @import url(“https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css”);
 body{font-family:'Poppings',sans-serif;background:radial-gradient(#fff,#111);margin:0px 8px 8px 8px;}
 header{text-align:center;font-family:Arial,Helvetica,sans-serif;margin:auto;}
-#shdw{box-shadow:1px 1.5px #333;margin:auto;border:1px solid #101010;border-radius:0px 0px 28px 28px;width:80%;background-color:#222;}
-#shdw2{background-color:#444;box-shadow:1px 1.5px #333;margin:auto;width:80%;border:1px solid #101010;}
-#shdw3{background-color:#222;box-shadow:1px 1.5px #333;margin:auto;width:auto;border:1px solid #101010;text-align:center;}
+#shdw{box-shadow:1px 1.5px #333;margin:auto;border:1px solid #101010;border-radius:0px 0px 28px 28px;width:80%;background:#222;}
+#shdw2{background:#444;box-shadow:1px 1.5px #333;margin:auto;width:80%;border:1px solid #101010;}
+#shdw3{background:#111;box-shadow:1px 1.5px #333;margin:auto;width:auto;border:1px solid #101010;text-align:center;}
 #shdw4{background-color:#dedede;box-shadow:1px 1.5px #333;padding:50px;margin:auto;width:80%;border:1px solid #101010;border-radius:96px;text-align:center;align-items:center;display:grid;}
 #bnrbg{height:78px;width:420px;}
 #tmptxt{text-align:center;}
@@ -14,22 +14,23 @@ header{text-align:center;font-family:Arial,Helvetica,sans-serif;margin:auto;}
 #ftxt{text-align:center;color:#555;}
 #gtm{height:0;width:0;display:none;visibility:hidden;}
 #yt{width:295.783px;height:166.367px;align-items:center;display:grid;margin:0px 146px;}
-div.cntr{padding:15px 0px;border:1px solid #dedede;margin:auto;background:url(https://officialssg.com/root/lib/assets/gfx/img/bnr/bgimg/white_brick_wall_4k.png) no-repeat;}
-#nbr{border-radius:0px 0px 28px 28px;margin:auto;text-align:center;overflow:hidden;background-color:#222;font-family:Arial,Helvetica,sans-serif;}
+div.cntr{padding:15px 0px;border:1px solid #dedede;margin:auto;background:url(https://swedishstudiosgames.github.io/ssg-website/root/lib/assets/gfx/img/bnr/bgimg/white_brick_wall_4k.png) no-repeat;}
+#nbr{border-radius:0px 0px 28px 28px;margin:auto;text-align:center;overflow:hidden;background:#222;font-family:Arial,Helvetica,sans-serif;}
 #nbr a{float:left;font-size:12px;color:#dedede;text-align:center;padding:12px 14px;text-decoration:none;}
 #drpdwn{float:left;overflow:hidden;}
-#drpdwn #drpbtn{cursor:pointer;font-size:16px;border:none;outline:none;color:#dedede;padding:14px 16px;background-color:inherit;font-family:inherit;margin:0;}
-#nbr a:hover,#drpdwn:hover #drpbtn,#drpbtn:focus{background-color:#1e1e1e;color:#aaa;}
-#drpdwn-cntnt {display:none;position:absolute;background-color:#f9f9f9;min-width:160px;box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2);z-index:1;}
+#drpdwn #drpbtn{cursor:pointer;font-size:16px;border:none;outline:none;color:#dedede;padding:14px 16px;background:inherit;font-family:inherit;margin:0;}
+#nbr a:hover,#drpdwn:hover #drpbtn,#drpbtn:focus{background:#1e1e1e;color:#aaa;}
+#drpdwn-cntnt {display:none;position:absolute;background:#f9f9f9;min-width:160px;box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2);z-index:1;}
 #drpdwn-cntnt a{float:none;color:#dededede;padding:12px 916px;text-decoration:none;display:block;text-align:left;}
-#drpdwn-cntnt a:hover{background-color:#eee;color:#fefefe;}
+#drpdwn-cntnt a:hover{background:#eee;color:#fefefe;}
 #shw{display:block;}
 #ppbtn{border:0;width:1;height:1;}
 #ppobj{border:0;}
-section,article{text-align:center;width:50%;height:auto;background-color:#444;margin:48px auto;display:grid;}
+.ftr{margin-right:16px;float:left;text-align:center;}
+nav ul{display:inline-block;list-style-type:none;}
+section,article{text-align:center;width:50%;height:auto;background:#444;margin:48px auto;display:grid;}
 section{float:left;}
 article{float:right;}
-a{text-decoration:none;text-align:center;}
+a{text-decoration:none;text-align:center;color:#444;}
 p{width:auto;}
-footer{text-align:center;}
 code{background-color:#555;border-radius:8px;font-size:12px;}
