@@ -6,3 +6,4 @@ body{width:auto;height:auto;align-items:center;display:flex;background-color:#11
 #ppap h2{font-family:arial;font-size:1.25em;}
 #ppap p{width:auto;font-family:arial;font-size:16px;}
 #ppap a{color:#333;text-decoration:none;font-family:arial;text-align:center;}
+#ppap a:hover{color:#1a1a1a;}
