@@ -1,7 +1,7 @@
 @charset "utf-8";
 @viewport{width:device-width;initial-scale:1.0;}
 @import url(“https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css”);
-body{font-family:'Poppings',sans-serif;background:radial-gradient(#fff,#111);margin:0px 8px 8px 8px;}
+body{font-family:'Poppings',sans-serif;background:radial-gradient(#fff,#111);margin:0px;}
 header{text-align:center;font-family:Arial,Helvetica,sans-serif;margin:auto;}
 #shdw{box-shadow:1px 1.5px #333;margin:auto;border:1px solid #101010;border-radius:0px 0px 28px 28px;width:64%;background:#222;}
 #shdw2{background:#444;box-shadow:1px 1.5px #333;margin:auto;width:64%;border:1px solid #101010;}
