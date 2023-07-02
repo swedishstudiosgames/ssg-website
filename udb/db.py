@@ -1,25 +1,14 @@
-import sqlite3
 from faker import Faker
+import sqlite3
 
 # Create a connection to the database
-conn = sqlite3.connect('honeypot_database.db')
+conn = sqlite3.connect('user_database.db')
 cursor = conn.cursor()
 
-# Create a table to store fake product data
+# Create the users table
 cursor.execute('''
-    CREATE TABLE fake_products (
-        id INTEGER PRIMARY KEY,
-        product_name TEXT,
-        price REAL,
-        availability TEXT,
-        description TEXT
-    )
-''')
-
-# Create a table to store fake user data
-cursor.execute('''
-    CREATE TABLE fake_users (
-        id INTEGER PRIMARY KEY,
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
         first_name TEXT,
         last_name TEXT,
         email TEXT,
@@ -28,21 +17,11 @@ cursor.execute('''
     )
 ''')
 
-# Generate and insert fake product data into the database
+# Generate fake user data and insert into the users table
 fake = Faker()
-for _ in range(10):
-    product_name = fake.catch_phrase()
-    price = fake.random_int(min=1000, max=100000)
-    availability = fake.random_element(elements=('In Stock', 'Out of Stock', 'Limited Stock', 'Pre-order'))
-    description = fake.paragraph(nb_sentences=3)
+num_users = 10000  # Set the desired number of fake users
 
-    cursor.execute('''
-        INSERT INTO fake_products (product_name, price, availability, description)
-        VALUES (?, ?, ?, ?)
-    ''', (product_name, price, availability, description))
-
-# Generate and insert fake user data into the database
-for _ in range(2):
+for _ in range(num_users):
     first_name = fake.first_name()
     last_name = fake.last_name()
     email = fake.email()
@@ -50,7 +29,7 @@ for _ in range(2):
     address = fake.address().replace("\n", ", ")
 
     cursor.execute('''
-        INSERT INTO fake_users (first_name, last_name, email, phone, address)
+        INSERT INTO users (first_name, last_name, email, phone, address)
         VALUES (?, ?, ?, ?, ?)
     ''', (first_name, last_name, email, phone, address))
 
