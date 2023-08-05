@@ -27,12 +27,14 @@ div.cntr{padding:15px 0px;border:1px solid #dedede;margin:auto;background:url(ht
 #ppbtn{border:0;width:1;height:1;}
 #ppobj{border:0;}
 #r1-t1{width:1903px;}
-#vid,#vid-url{padding-left:16px;}
-#vid{width:320px;height:180.5px;}
-#vid-url{text-align:left;color:#eee;}
 .nbtn-ico{float:left;}
 .ftr{margin-right:16px;float:left;text-align:center;}
 .ftr a:hover{color:#333;}
+div.pl{margin:16px;border:1px solid #484848;float:left;width:52.1%;background:#404040;}
+div.pl:hover{border:1px solid #777;}
+div.pl iframe{width:320px;height:180.5px;}
+div.d{float:left;}
+div.d a{padding-left:16px;text-align:left;color:#eee;}
 header div nav li{display:inline-block;list-style-type:none;}
 footer nav ul{display:inline-block;list-style-type:none;}
 section,article{text-align:center;width:50%;height:auto;background:#444;margin:48px auto;display:grid;}
@@ -41,5 +43,3 @@ article{float:right;}
 a{text-decoration:none;text-align:center;color:#444;}
 p{width:auto;}
 em{color:#222;}
-h1{text-align:center;}
-code{background-color:#555;border-radius:8px;font-size:12px;}
