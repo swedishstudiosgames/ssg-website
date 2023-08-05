@@ -27,8 +27,8 @@ div.cntr{padding:15px 0px;border:1px solid #dedede;margin:auto;background:url(ht
 #ppbtn{border:0;width:1;height:1;}
 #ppobj{border:0;}
 #r1-t1{width:1903px;}
-#vid,#vid-url{padding:16px;}
-#vid{width:560px;height:315px;}
+#vid,#vid-url{padding-left:16px;}
+#vid{width:320px;height:180.5px;}
 #vid-url{text-align:left;color:#eee;}
 .nbtn-ico{float:left;}
 .ftr{margin-right:16px;float:left;text-align:center;}
