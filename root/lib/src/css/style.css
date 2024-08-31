@@ -17,27 +17,28 @@ header{text-align:center;font-family:Arial,Helvetica,sans-serif;margin:auto;}
 #yt{width:295.783px;height:166.367px;align-items:center;display:grid;margin:0px 146px;}
 div.cntr{padding:15px 0px;border:1px solid #dedede;margin:auto;background:url(https://swedishstudiosgames.github.io/ssg-website/root/lib/assets/gfx/img/bnr/bgimg/white_brick_wall_4k.png) no-repeat;}
 #nbr{border-radius:0px 0px 28px 28px;margin:auto;text-align:center;overflow:hidden;background:#222;font-family:Arial,Helvetica,sans-serif;}
-#nbr a{float:left;font-size:12px;color:#dedede;text-align:center;padding:12px 9px;text-decoration:none;}
+#nbr,a{float:left;font-size:12px;color:#dedede;text-align:center;padding:12px 9px;text-decoration:none;}
 #drpdwn{float:left;overflow:hidden;}
-#drpdwn #drpbtn{cursor:pointer;font-size:16px;border:none;outline:none;color:#dedede;padding:14px 16px;background:inherit;font-family:inherit;margin:0;}
-#nbr a:hover,#drpdwn:hover #drpbtn,#drpbtn:focus{background:#1e1e1e;color:#aaa;}
-#drpdwn-cntnt {display:none;position:absolute;background:#f9f9f9;min-width:160px;box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2);z-index:1;}
-#drpdwn-cntnt a{float:none;color:#dededede;padding:12px 916px;text-decoration:none;display:block;text-align:left;}
-#drpdwn-cntnt a:hover{background:#eee;color:#fefefe;}
+#drpdwn,#drpbtn{cursor:pointer;font-size:16px;border:none;outline:none;color:#dedede;padding:14px 16px;background:inherit;font-family:inherit;margin:0;}
+#nbr,a:hover,#drpdwn:hover #drpbtn,#drpbtn:focus{background:#1e1e1e;color:#aaa;}
+#drpdwn-cntnt{display:none;position:absolute;background:#f9f9f9;min-width:160px;box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2);z-index:1;}
+#drpdwn-cntnt,a{float:none;color:#dededede;padding:12px 916px;text-decoration:none;display:block;text-align:left;}
+#drpdwn-cntnt,a:hover{background:#eee;color:#fefefe;}
 #shw{display:block;}
 #ppbtn{border:0;width:1;height:1;}
 #ppobj{border:0;}
 #r1-t1{width:1903px;}
-.nbtn-ico{float:left;}
+.nbtn-r{float:right;}
+.nbtn-l,.nbtn-ico{float:left;}
 .ftr{margin-right:16px;float:left;text-align:center;}
-.ftr a:hover{color:#333;}
+.ftr,a:hover{color:#333;}
 div.pl{margin:16px;border:1px solid #484848;float:left;width:52.1%;background:#404040;}
 div.pl:hover{border:1px solid #777;}
-div.pl iframe{width:320px;height:180.5px;}
+div.pl,iframe{width:320px;height:180.5px;}
 div.d{float:left;}
 div.d a{padding-left:16px;text-align:left;color:#eee;}
-header div nav li{display:inline-block;list-style-type:none;}
-footer nav ul{display:inline-block;list-style-type:none;}
+header,div,nav,li{display:inline-block;list-style-type:none;}
+footer,nav,ul{display:inline-block;list-style-type:none;}
 section,article{text-align:center;width:50%;height:auto;background:#444;margin:48px auto;display:grid;}
 section{float:left;}
 article{float:right;}
