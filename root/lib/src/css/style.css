@@ -35,7 +35,7 @@ div.cntr{padding:15px 0px;border:1px solid #dedede;margin:auto;background:url(ht
 div.pl{margin:16px;border:1px solid #484848;float:left;width:52.1%;background:#404040;}
 div.pl:hover{border:1px solid #777;}
 div.pl iframe{width:320px;height:180.5px;}
-div.vid iframe{width:320px;height:180.5px;position:relative;padding-top:56.25%;}
+.vid iframe{width:320px;height:180.5px;position:relative;padding-top:56.25%;}
 div.d{float:left;}
 div.d a{padding-left:16px;text-align:left;color:#eee;}
 header div nav li{display:inline-block;list-style-type:none;}
