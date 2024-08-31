@@ -29,7 +29,7 @@ div.cntr{padding:15px 0px;border:1px solid #dedede;margin:auto;background:url(ht
 #ppobj{border:0;}
 #r1-t1{width:1903px;}
 .nbtn-r{float:right;}
-.nbtn-l .nbtn-ico{float:left;}
+.nbtn-l{float:left;}
 .ftr{margin-right:16px;float:left;text-align:center;}
 .ftr a:hover{color:#333;}
 div.pl{margin:16px;border:1px solid #484848;float:left;width:52.1%;background:#404040;}
