@@ -39,7 +39,7 @@ div.vid{width:320px;height:180.5px;position:relative;padding-top:56.25%;}
 div.vid1{border:none;position:absolute;top:0;left:0;height:20%;width:96%;margin-left:25%;}
 div.d{float:left;}
 div.d a{padding-left:16px;text-align:left;color:#eee;}
-#bad1 {margin:auto;padding:0% 18%;align-content:center;display:grid;}
+#bad1 {margin:auto;padding:0% 18%;align-content:center;display:grid;transform:rotate(-15deg);}
 header div nav li{display:inline-block;list-style-type:none;}
 footer nav ul{display:inline-block;list-style-type:none;}
 section article{text-align:center;width:50%;height:auto;background:#444;margin:48px auto;display:grid;}
