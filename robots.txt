@@ -1,3 +1,37 @@
 # https://www.robotstxt.org/robotstxt.html
+
+# Block everything by default
 User-agent: *
-Disallow: 
+Disallow: /
+
+# Googlebot
+User-agent: Googlebot
+Allow: /root/lib/assets/
+Disallow: /root/lib/src/
+
+# DuckDuckBot
+User-agent: DuckDuckBot
+Allow: /root/lib/assets/
+Disallow: /root/lib/src/
+
+# Bingbot
+User-agent: bingbot
+Allow: /root/lib/assets/
+Disallow: /root/lib/src/
+
+# Yahoo! Slurp
+User-agent: Slurp
+Allow: /root/lib/assets/
+Disallow: /root/lib/src/
+
+# SearXNG (and common alias “searx”)
+User-agent: searxng
+Allow: /root/lib/assets/
+Disallow: /root/lib/src/
+
+User-agent: searx
+Allow: /root/lib/assets/
+Disallow: /root/lib/src/
+
+# Sitemap
+Sitemap: https://swedishstusdiosgames.com/sitemap.xml
