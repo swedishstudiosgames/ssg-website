@@ -32,8 +32,8 @@ div.cntr{padding:15px 0px;border:1px solid #dedede;margin:auto;background:url(ht
 .nbtn-l{float:left;}
 .ftr{margin-right:16px;float:left;text-align:center;}
 .ftr a:hover{color:#333;}
-.q-cntinr {display:flex;align-items:center;background-color:#fff;border:1px solid #dfe1e5;border-radius:24px;width:100%;max-width:250px;box-shadow:0 2px 5px rgba(0,0,0,0.1);transition:box-shadow 0.3s ease;}
-.q-cntinr:hover .q-cntinr:focus-within{box-shadow:0 4px 8px rgba(0,0,0,0.15);}
+.q-cntinr {display:flex;align-items:center;background-color:#222;border:1px solid #111;border-radius:24px;width:100%;max-width:250px;box-shadow:0 2px 5px rgba(0,0,0,0.1);transition:box-shadow 0.3s ease;}
+.q-cntinr:hover, .q-cntinr:focus-within{box-shadow:0 4px 8px rgba(0,0,0,0.15);}
 .q-ip{border:none;outline:none;background:none;width:100%;padding:12px 20px;font-size:16px;}
 .q-btn{border:none;background:none;cursor:pointer;padding:12px;display:flex;align-items:center;justify-content:center;}
 .q-ico{width:20px;height:20px;fill:#5f6368;}
@@ -55,6 +55,7 @@ article{float:right;}
 a{text-decoration:none;text-align:center;color:#444;}
 p{width:auto;}
 em{color:#222;}
+
 
 
 
