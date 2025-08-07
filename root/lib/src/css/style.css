@@ -37,7 +37,7 @@ div.cntr{padding:15px 0px;border:1px solid #dedede;margin:auto;background:url(ht
 .q-ip{border:none;outline:none;background:none;width:100%;padding:12px 20px;font-size:16px;}
 .q-btn{border:none;background:none;cursor:pointer;padding:12px;display:flex;align-items:center;justify-content:center;}
 .q-ico{width:20px;height:20px;fill:#5f6368;}
-.q-btn:hover .q-ico{fill:#333;}
+.q-btn:hover,.q-ico{fill:#333;}
 div.pl{margin:16px;border:1px solid #484848;float:left;width:auto;background:#404040;}
 div.pl:hover{border:1px solid #777;}
 div.pl iframe{width:320px;height:180.5px;}
@@ -55,5 +55,6 @@ article{float:right;}
 a{text-decoration:none;text-align:center;color:#444;}
 p{width:auto;}
 em{color:#222;}
+
 
 
