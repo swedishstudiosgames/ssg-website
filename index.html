@@ -183,9 +183,9 @@
       } else {
         // Store search (assumes ?q=... on your store search endpoint)
         form.action = 'https://store.swedishstudiosgames.com/search';
-        form.method = 'get';
+        form.method = 'post';
         form.setAttribute('aria-label', 'Site search');
-        input.placeholder = 'Search products...';
+        input.placeholder = 'Search the store...';
         toggle.classList.remove('active');
         toggle.setAttribute('aria-pressed', 'false');
         toggle.title = 'Search the internet';
@@ -361,6 +361,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
    </body>
 </html>
+
 
 
 
