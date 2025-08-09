@@ -53,163 +53,24 @@
        </div>
      </header>
     <br>
-<!-- Embedded Search Bar -->
-<form action="https://search.swedishstudiosgames.com/search" method="POST" style="padding:10px; border-radius:8px; display:flex; align-items:center; width:auto; max-width:400px; font-family:sans-serif;">
-  <input type="text" name="q" placeholder="Search..." required
-         style="flex:1; padding:10px; border:none; border-radius:64px; background:#1e1e1e; color:#fff; font-size:32px;">
-</form>
-<br>
-<!-- Smart Search Bar (Store <-> Web via SearXNG) -->
-<form id="smartSearch" action="https://store.swedishstudiosgames.com/search" method="POST" class="search-form" role="search" aria-label="Site search">
-  <div class="search-wrap">
-    <input
-      id="q"
-      class="search-input"
-      type="text"
-      name="q"
-      placeholder="Search the store..."
-      autocomplete="true"
-      aria-label="Search query"
-      required
-    />
-
-    <!-- Globe toggle: switches between Store (GET) and Web (POST to SearXNG) -->
-    <button
-      type="button"
-      id="engineToggle"
-      class="icon-btn globe"
-      aria-label="Toggle web search"
-      aria-pressed="false"
-      title="Search the internet"
-    >
-      <!-- Globe SVG -->
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M12 2a10 10 0 1 0 0 20a10 10 0 0 0 0-20Z" stroke="currentColor" stroke-width="1.7"/>
-        <path d="M2 12h20M12 2c-3 3-4.5 7-4.5 10s1.5 7 4.5 10m0-20c3 3 4.5 7 4.5 10s-1.5 7-4.5 10" stroke="currentColor" stroke-width="1.3"/>
-      </svg>
-    </button>
-
-    <!-- Search submit button -->
-    <button type="submit" class="icon-btn search" aria-label="Submit search" title="Search">
-      <!-- Magnifying glass SVG -->
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"/>
-        <path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-      </svg>
-    </button>
-  </div>
-</form>
-
-<style>
-  .search-form { max-width: 640px; }
-  .search-wrap {
-    position: relative;
-  }
-
-  .search-input {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 12px 72px 12px 14px; /* room for icons on the right */
-    border: 1px solid #d0d4d9;
-    border-radius: 8px;
-    font-size: 16px;
-    line-height: 1.2;
-    transition: border-color .15s ease, box-shadow .15s ease;
-  }
-  .search-input:focus {
-    outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
-  }
-
-  .icon-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 30px;
-    width: 30px;
-    border: none;
-    background: transparent;
-    color: #6b7280; /* gray-500 */
-    border-radius: 6px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: color .15s ease, background-color .15s ease;
-  }
-  .icon-btn:hover { color: #111827; background: rgba(0,0,0,0.04); }
-  .icon-btn:focus-visible { outline: 2px solid #3b82f6; outline-offset: 2px; }
-
-  /* Place search icon at far right */
-  .icon-btn.search { right: 10px; }
-
-  /* Globe is a few pixels to the left of search icon, with a tiny gap */
-  .icon-btn.globe { right: 40px; } /* ~30px width + ~10px gap */
-
-  /* Active web mode state for globe */
-  .icon-btn.globe.active {
-    color: #2563eb; /* blue-600 */
-    background: rgba(37,99,235,0.12);
-  }
-
-  /* Small screens: keep spacing reasonable */
-  @media (max-width: 420px) {
-    .search-input { padding-right: 66px; }
-    .icon-btn.search { right: 8px; }
-    .icon-btn.globe { right: 38px; }
-  }
-</style>
-
-<script>
-  (function () {
-    const form = document.getElementById('smartSearch');
-    const input = document.getElementById('q');
-    const toggle = document.getElementById('engineToggle');
-
-    // Modes: 'store' (GET -> store) or 'web' (POST -> SearXNG)
-    let mode = 'store'; // default
-
-    function applyMode() {
-      if (mode === 'web') {
-        // SearXNG expects 'q' and supports POST to /search
-        form.action = 'https://search.swedishstudiosgames.com/search';
-        form.method = 'post';
-        form.setAttribute('aria-label', 'Web search (SearXNG)');
-        input.placeholder = 'Search the internet...';
-        toggle.classList.add('active');
-        toggle.setAttribute('aria-pressed', 'true');
-        toggle.title = 'Searching the internet';
-      } else {
-        // Store search (assumes ?q=... on your store search endpoint)
-        form.action = 'https://store.swedishstudiosgames.com/search';
-        form.method = 'post';
-        form.setAttribute('aria-label', 'Site search');
-        input.placeholder = 'Search the store...';
-        toggle.classList.remove('active');
-        toggle.setAttribute('aria-pressed', 'false');
-        toggle.title = 'Search the internet';
-      }
-    }
-
-    toggle.addEventListener('click', () => {
-      mode = (mode === 'store') ? 'web' : 'store';
-      applyMode();
-      input.focus();
-    });
-
-    // Optional: keyboard shortcut Alt+G to toggle mode
-    document.addEventListener('keydown', (e) => {
-      if (e.altKey && (e.key === 'g' || e.key === 'G')) {
-        e.preventDefault();
-        toggle.click();
-      }
-    });
-
-    // Initialize
-    applyMode();
-  })();
-</script>
+    <form id="smartSearch"action="https://store.swedishstudiosgames.com/search"method="POST"class="search-form"role="search"aria-label="Site search">
+     <div class="search-wrap">
+       <input id="q"class="search-input"type="text"name="q"placeholder="Search the store..."autocomplete="true"aria-label="Search query"required/>
+         <button type="button"id="engineToggle"class="icon-btn globe"aria-label="Toggle web search"aria-pressed="false"title="Search the internet">
+           <svg width="18"height="18"viewBox="0 0 24 24"fill="none"aria-hidden="true">
+             <path d="M12 2a10 10 0 1 0 0 20a10 10 0 0 0 0-20Z"stroke="currentColor"stroke-width="1.7"/>
+             <path d="M2 12h20M12 2c-3 3-4.5 7-4.5 10s1.5 7 4.5 10m0-20c3 3 4.5 7 4.5 10s-1.5 7-4.5 10"stroke="currentColor"stroke-width="1.3"/>
+            </svg>
+          </button>
+	     <button type="submit"class="icon-btn search"aria-label="Submit search"title="Search">
+           <svg width="18"height="18"viewBox="0 0 24 24"fill="none"aria-hidden="true">
+            <circle cx="11"cy="11"r="7"stroke="currentColor"stroke-width="1.7"/>
+		    <path d="M20 20l-3.5-3.5" stroke="currentColor"stroke-width="1.7"stroke-linecap="round"/>
+	       </svg>
+	     </button>
+       </div>
+     </form>
+	<script src="https://swedishstudiosgames.github.io/ssg-website/root/lib/src/js/search.js"defer crossorigin="anonymous"></script>
     <br>
     <div id="shdw2">
       <br>
@@ -318,49 +179,23 @@
                 <li class="ftr">
                   <a href="https://return-and-refund.swedishstudiosgames.com">Return&nbsp;and&nbsp;Refund</a>
                  </li>
-	       </strong>
+	           </strong>
              </ul>
            </nav>
           <br>
           <em>
             <strong>Copyright©&nbsp;2008-2025&nbsp;&nbsp;SwedishStudios&nbsp;Games<strong>
-           </em>
-	  <br>
-	 </footer>
+		   </em>
+	     <br>
+	    </footer>
        </div>
      </div>
-    <!-- Start of Tidio Embed Code -->
-    <!-- <script src="https://code.tidio.co/8ovx5not1kd7t2fxoe8y4civh4bq14xp.js"async></script> -->
-    <!-- End of Tidio Embed Code -->
-    <br>
-    <br>
-    <br>
-    <a href="https://tosdr.org/en/service/7739">
-      <img src="https://shields.tosdr.org/en_7739.svg"/>
-     </a>
-    <!-- Cookie Consent by PrivacyPolicies.com https://www.PrivacyPolicies.com -->
-    <script type="text/javascript"src="https://www.privacypolicies.com/public/cookie-consent/4.0.0/cookie-consent.js"charset="UTF-8"></script>
-    <script type="text/javascript"charset="UTF-8">document.addEventListener('DOMContentLoaded',function(){cookieconsent.run({"notice_banner_type":"interstitial","consent_type":"express","palette":"dark","language":"en","page_load_consent_levels":["strictly-necessary"],"notice_banner_reject_button_hide":false,"preferences_center_close_button_hide":false,"page_refresh_confirmation_buttons":false,"website_name":"SwedishStudios Games","website_privacy_policy_url":"https://privacy.swedishstudiosgames.com"});});</script>
-    <!-- Google Analytics -->
-    <script type="text/plain"cookie-consent="tracking"async src="https://www.googletagmanager.com/gtag/js?id=G-7P0GHECMQ0"></script>
-    <script type="text/plain"cookie-consent="tracking">window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7P0GHECMQ0');</script>
-    <!-- end of Google Analytics-->
-    <!-- Google AdSense -->
-    <script type="text/plain"cookie-consent="targeting"async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001581495174355"crossorigin="anonymous"></script>
-    <!-- end of Google AdSense-->
-    <!-- <noscript>Cookie Consent by <a href="https://www.privacypolicies.com/"rel="noopener">Privacy Policies website</a></noscript> -->
-    <!-- End Cookie Consent by PrivacyPolicies.com https://www.PrivacyPolicies.com -->
-    <!-- Below is the link that users can use to open Preferences Center to change their preferences. Do not modify the ID parameter. Place it where appropriate, style it as needed. -->
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NBTZBGL"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NBTZBGL&gtm_auth=YpbL7h4hO0odPU635vG11g&gtm_preview=env-1&gtm_cookies_win=x"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-   </body>
+   <br>
+   <br>
+   <br>
+  </body>
 </html>
+
 
 
 
