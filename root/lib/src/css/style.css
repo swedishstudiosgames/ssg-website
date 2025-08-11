@@ -36,6 +36,7 @@ div.cntr{padding:15px 0px;border:1px solid #dedede;margin:auto;background:url(ht
 .q-wrap{position:relative;}
 .q-ip{width:100%;box-sizing:border-box;padding:12px 72px 12px 14px;border:1px solid #d0d4d9;border-radius:8px;font-size:16px;line-height:1.2;transition:border-color .15s ease, box-shadow .15s ease;}
 .q-ip:focus{outline:none;border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,0.15);}
+.ico{height:16px;width:16px;}
 .ico-btn{position:absolute;top:50%;transform:translateY(-50%);height:24px;width:24px;border:none;background:transparent;color:#6b7280; /* gray-500 */border-radius:6px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:color .15s ease,background-color .15s ease;}
 .ico-btn:hover{color:#111827;background:rgba(0,0,0,0.04);}
 .ico-btn:focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}
