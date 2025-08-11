@@ -8,14 +8,14 @@ header{text-align:center;font-family:Arial,Helvetica,sans-serif;margin:auto;}
 #s2 h1{text-align:center;}
 #s3{background:#111;box-shadow:1px 1.5px #333;margin:auto;width:auto;border:1px solid #101010;text-align:center;}
 #s4{background-color:#dedede;box-shadow:1px 1.5px #333;padding:50px;margin:auto;width:80%;border:1px solid #101010;border-radius:96px;text-align:center;align-items:center;display:grid;}
-#bnrbg{height:78px;width:420px;}
-#tmptxt{text-align:center;}
-#nbtn{height:20px;width:20px;}
-#gtxt{color:#000;}
-#ftxt{text-align:center;color:#555;}
+#bb{height:78px;width:420px;}
+#tt{text-align:center;}
+#nb{height:20px;width:20px;}
+#gt{color:#000;}
+#ft{text-align:center;color:#555;}
 #gtm{height:0;width:0;display:none;visibility:hidden;}
 #yt{width:295.783px;height:166.367px;align-items:center;display:grid;margin:0px 146px;}
-div.cntr{padding:15px 0px;border:1px solid #dedede;margin:auto;background:url(https://swedishstudiosgames.github.io/ssg-website/root/lib/assets/gfx/img/bnr/bgimg/white_brick_wall_4k.png) no-repeat;}
+div.c{padding:15px 0px;border:1px solid #dedede;margin:auto;background:url(https://swedishstudiosgames.github.io/ssg-website/root/lib/assets/gfx/img/bnr/bgimg/white_brick_wall_4k.png) no-repeat;}
 #nbr{border-radius:0px 0px 28px 28px;margin:auto;text-align:center;overflow:hidden;background:#222;font-family:Arial,Helvetica,sans-serif;}
 #nbr a{float:left;font-size:12px;color:#dedede;text-align:center;padding:12px 9px;text-decoration:none;}
 #drpdwn{float:left;overflow:hidden;}
@@ -25,8 +25,8 @@ div.cntr{padding:15px 0px;border:1px solid #dedede;margin:auto;background:url(ht
 #drpdwn-cntnt a{float:none;color:#dededede;padding:12px 916px;text-decoration:none;display:block;text-align:left;}
 #drpdwn-cntnt a:hover{background:#eee;color:#fefefe;}
 #s1{display:block;}
-#ppbtn{border:0;width:1;height:1;}
-#ppobj{border:0;}
+#ppb{border:0;width:1;height:1;}
+#ppo{border:0;}
 #r1-t1{width:1903px;}
 .nbr{float:right;}
 .nbl{float:left;}
