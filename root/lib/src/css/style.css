@@ -32,7 +32,7 @@ div.cntr{padding:15px 0px;border:1px solid #dedede;margin:auto;background:url(ht
 .nbtn-l{float:left;}
 .ftr{margin-right:16px;float:left;text-align:center;}
 .ftr a:hover{color:#333;}
-.q-form{max-width:640px;}
+.q-form{max-width:640px;margin-left:17.85%;}
 .q-wrap{position:relative;}
 .q-ip{width:100%;box-sizing:border-box;padding:12px 72px 12px 14px;border:1px solid #d0d4d9;border-radius:8px;font-size:16px;line-height:1.2;transition:border-color .15s ease, box-shadow .15s ease;}
 .q-ip:focus{outline:none;border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,0.15);}
