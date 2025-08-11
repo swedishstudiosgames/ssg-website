@@ -41,7 +41,7 @@ div.cntr{padding:15px 0px;border:1px solid #dedede;margin:auto;background:url(ht
 .ico-btn:focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}
 .ico-btn.q{right:10px;}
 .ico-btn.g{right:40px;}
-.ico-btn.g.active{color:#2563eb;background:rgba(37,99,235,0.12);}
+.ico-btn.g.a{color:#2563eb;background:rgba(37,99,235,0.12);}
 @media(max-width:420px){.q-ip{padding-right:66px;}.ico-btn.q{right:8px;}.ico-btn.g{right:38px;}}
 div.pl{margin:16px;border:1px solid #484848;float:left;width:auto;background:#404040;}
 div.pl:hover{border:1px solid #777;}
@@ -60,12 +60,3 @@ article{float:right;}
 a{text-decoration:none;text-align:center;color:#444;}
 p{width:auto;}
 em{color:#222;}
-
-
-
-
-
-
-
-
-
