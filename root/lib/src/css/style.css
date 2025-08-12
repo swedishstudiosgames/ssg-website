@@ -30,8 +30,8 @@ div.c{padding:15px 0px;border:1px solid #dedede;margin:auto;background:url(https
 #r1-t1{width:1903px;}
 .nbr{float:right;}
 .nbl{float:left;}
-.ftr{margin-right:16px;float:left;text-align:c;}
-.ftr a:hover{color:#333;}
+.ft{margin-right:16px;float:left;text-align:c;}
+.ft a:hover{color:#333;}
 .qf{max-width:640px;margin-left:18%;}
 .qw{position:relative;}
 .qi{width:100%;box-sizing:border-box;padding:12px 72px 12px 14px;border:1px solid #d0d4d9;border-radius:8px;font-size:16px;line-height:1.2;transition:border-color .15s ease, box-shadow .15s ease;}
