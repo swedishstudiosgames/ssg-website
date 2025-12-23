@@ -38,6 +38,14 @@ document.addEventListener('DOMContentLoaded', () => {
             m: 'POST',
             e: 'multipart/form-data',
             ii: true
+        },
+        speech: {
+            a: 'https://search.swedishstudiosgames.com/search', // Default to web search
+            ph: 'Speak to search...',
+            m: 'POST',
+            e: 'application/x-www-form-urlencoded',
+            ii: false,
+            isSpeech: true
         }
     };
 
@@ -99,6 +107,50 @@ document.addEventListener('DOMContentLoaded', () => {
             ti.disabled = false;
             ti.placeholder = c.ph;
             ti.focus();
+        }
+
+        // Trigger Speech Recognition if Speech Mode
+        if (c.isSpeech) {
+            startDictation();
+        }
+    }
+
+    function startDictation() {
+        if (window.webkitSpeechRecognition || window.SpeechRecognition) {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const recognition = new SpeechRecognition();
+            
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = "en-US";
+            
+            // Visual cue that listening has started
+            ti.placeholder = "Listening...";
+            
+            recognition.start();
+
+            recognition.onresult = function(e) {
+                if (e.results.length > 0) {
+                    ti.value = e.results[0][0].transcript;
+                }
+                recognition.stop();
+            };
+            
+            recognition.onerror = function(e) {
+                console.error("Speech recognition error", e);
+                ti.placeholder = "Error. Please type...";
+                recognition.stop();
+            }
+            
+            recognition.onend = function() {
+                // Restore placeholder if empty
+                if (!ti.value) {
+                    ti.placeholder = "Speak to search...";
+                }
+            }
+        } else {
+            console.warn("Speech to text is not supported in this browser.");
+            ti.placeholder = "Speech not supported.";
         }
     }
 });
