@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         image: {
             a: 'https://www.google.com/searchbyimage/upload', // Added www. to prevent redirect issues
             ph: 'Upload an image...',
-            m: 'POST',
+            m: 'GET',
             e: 'multipart/form-data',
             ii: true
         }
