@@ -1,53 +1,109 @@
 <!doctype html>
-<html lang="en-us"type="text/html">
+<html lang="en-us">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport"content="width=device-width,initial-scale=1.0">
-    <meta name="description"content="We're a video-game publisher.">
-    <meta name="keywords"content="swedishstudios,swedishstudio,games,game,gaming,computer,computers,company,companies,swedish,sweden,studios,studio,ssg,download,dlc,forum,guide,tutorial,support,help,minecraft,texture,windows,linux,ubuntu,lubuntu,arch,emulator,virtual,folders,vm,ps4,playstation,driver,firmware,os,server,ss34,team,the,hawks,hawkeye,hawkeyes,hawk,eyes,eye,fortnite,swedenstyle34,restlesshunter69,restlesshunter,restless,discord,router,port,forward,forwarding,portfolio,portforwarding,portable,mobile,portforward,fedora,free,vmware,virualbox,mod,mods">
-    <link rel="icon"type="image/png"href="https://swedishstudiosgames.github.io/ssg-website/root/lib/assets/gfx/img/ico/favico/emblem/favico.png">
-    <link rel="stylesheet"type="text/css"href="/root/lib/src/css/style.css">
-    <title>SwedishStudios&nbsp;Games&nbsp;-&nbsp;Home</title>
-<!-- <script type="text/javascript"data-cmp-ab="1"src="https://cdn.consentmanager.net/delivery/autoblocking/eb69c57762dd7.js"data-cmp-host="c.delivery.consentmanager.net"data-cmp-cdn="cdn.consentmanager.net"data-cmp-codesrc="0"></script>
-<script src="https://cdn.consentmanager.net/trackless/delivery/.js" async type="text/javascript"></script> -->
-   </head>
-  <body>
-    <a href="https://swedishstudiosgames.com/udb/"style="display:none;">admin dashboard</a>
-    <header id="s1">
-      <div class="c">
-        <a href="https://swedishstudiosgames.com">
-          <img id="bb"src="/root/lib/assets/gfx/img/bnr/bgimg/ssg-wm_with_logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>SwedishStudios Games - Home</title>
+    
+    <!-- SEO & Meta Tags -->
+    <meta name="description" content="We're a video-game publisher.">
+    <meta name="keywords" content="swedishstudios,swedishstudio,games,game,gaming,computer,computers,company,companies,swedish,sweden,studios,studio,ssg,download,dlc,forum,guide,tutorial,support,help,minecraft,texture,windows,linux,ubuntu,lubuntu,arch,emulator,virtual,folders,vm,ps4,playstation,driver,firmware,os,server,ss34,team,the,hawks,hawkeye,hawkeyes,hawk,eyes,eye,fortnite,swedenstyle34,restlesshunter69,restlesshunter,restless,discord,router,port,forward,forwarding,portfolio,portforwarding,portable,mobile,portforward,fedora,free,vmware,virualbox,mod,mods">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="SwedishStudios Games">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://swedishstudiosgames.github.io/ssg-website/root/lib/assets/gfx/img/ico/favico/emblem/favico.png">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://swedishstudiosgames.com/">
+    <meta property="og:title" content="SwedishStudios Games - Video Game Publisher">
+    <meta property="og:description" content="SwedishStudios Games is a premier video game publisher offering downloads, game hosting, support, and community forums.">
+    <meta property="og:image" content="https://swedishstudiosgames.github.io/ssg-website/root/lib/assets/gfx/img/bnr/bgimg/ssg-wm_with_logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://swedishstudiosgames.com/">
+    <meta property="twitter:title" content="SwedishStudios Games - Video Game Publisher">
+    <meta property="twitter:description" content="SwedishStudios Games is a premier video game publisher offering downloads, game hosting, support, and community forums.">
+    <meta property="twitter:image" content="https://swedishstudiosgames.github.io/ssg-website/root/lib/assets/gfx/img/bnr/bgimg/ssg-wm_with_logo.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "SwedishStudios Games",
+      "url": "https://swedishstudiosgames.com",
+      "logo": "https://swedishstudiosgames.github.io/ssg-website/root/lib/assets/gfx/img/bnr/bgimg/ssg-wm_with_logo.png",
+      "sameAs": [
+        "https://store.swedishstudiosgames.com",
+        "https://discord.gg/your-invite-code"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "url": "https://contact.swedishstudiosgames.com"
+      }
+    }
+    </script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Poppins', 'sans-serif'],
+              header: ['Arial', 'Helvetica', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Link to external CSS (kept for file structure compatibility, but empty) -->
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body class="font-sans m-0 bg-[radial-gradient(#fff,#111)]">
+    <a href="https://swedishstudiosgames.com/udb/" class="hidden" rel="nofollow">admin dashboard</a>
+    
+    <!-- Header Section -->
+    <header id="s1" class="text-center font-header mx-auto shadow-[1px_1.5px_#333] border border-[#101010] rounded-b-[28px] w-[64%] bg-[#222]">
+      <!-- Header Banner -->
+      <div class="py-[15px] border border-[#dedede] mx-auto bg-[url('https://swedishstudiosgames.github.io/ssg-website/root/lib/assets/gfx/img/bnr/bgimg/white_brick_wall_4k.png')] bg-no-repeat bg-center flex justify-center items-center">
+        <a href="https://swedishstudiosgames.com" title="Return to Home" class="block">
+          <img id="bb" src="https://swedishstudiosgames.github.io/ssg-website/root/lib/assets/gfx/img/bnr/bgimg/ssg-wm_with_logo.png" alt="Logo" class="h-[78px] w-[420px] block">
          </a>
        </div>
-      <div id="nbr">
-        <nav>
+      
+      <!-- Navigation -->
+      <div id="nbr" class="rounded-b-[28px] mx-auto text-center overflow-hidden bg-[#222] font-header">
+        <nav role="navigation" aria-label="Main Navigation">
           <strong>
-            <li class="nbl">
-              <a href="https://swedishstudiosgames.com">Home</a>
-             </li>
-            <li class="nbl">
-              <a href="#">About</a>
-             </li>
-            <li class="nbl">
-              <a href="#">News</a>
-             </li>
-            <li class="nbl">
-              <a href="#">Forum</a>
-             </li>
-            <li class="nbl">
-              <a href="https://store.swedishstudiosgames.com">Store</a>
-             </li>
-            <li class="nbl">
-              <a href="#">Support</a>
-             </li>
-            <li class="nbr">
-              <a href="#">MyAccount
-                <img alt="MyAccount"src="https://cdn-icons-png.flaticon.com/16/1077/1077114.png">
+            <li class="inline-block list-none float-left"><a href="https://swedishstudiosgames.com" class="float-left text-[12px] text-[#dedede] text-center px-[9px] py-[12px] no-underline hover:bg-[#1e1e1e] hover:text-[#aaa]">Home</a></li>
+            <li class="inline-block list-none float-left"><a href="#" class="float-left text-[12px] text-[#dedede] text-center px-[9px] py-[12px] no-underline hover:bg-[#1e1e1e] hover:text-[#aaa]">About</a></li>
+            <li class="inline-block list-none float-left"><a href="#" class="float-left text-[12px] text-[#dedede] text-center px-[9px] py-[12px] no-underline hover:bg-[#1e1e1e] hover:text-[#aaa]">News</a></li>
+            <li class="inline-block list-none float-left"><a href="#" class="float-left text-[12px] text-[#dedede] text-center px-[9px] py-[12px] no-underline hover:bg-[#1e1e1e] hover:text-[#aaa]">Forum</a></li>
+            <li class="inline-block list-none float-left"><a href="https://store.swedishstudiosgames.com" class="float-left text-[12px] text-[#dedede] text-center px-[9px] py-[12px] no-underline hover:bg-[#1e1e1e] hover:text-[#aaa]">Store</a></li>
+            <li class="inline-block list-none float-left"><a href="#" class="float-left text-[12px] text-[#dedede] text-center px-[9px] py-[12px] no-underline hover:bg-[#1e1e1e] hover:text-[#aaa]">Support</a></li>
+            
+            <!-- MyAccount Link with Shifted Icon -->
+            <li class="inline-block list-none float-right">
+              <a href="#" class="float-left text-[12px] text-[#dedede] text-center px-[9px] py-[12px] no-underline hover:bg-[#1e1e1e] hover:text-[#aaa] flex items-center">
+                MyAccount
+                <img alt="MyAccount" src="https://cdn-icons-png.flaticon.com/16/1077/1077114.png" class="ml-4">
                </a>
              </li>
-            <li class="nbr">
-              <a href="#">Checkout
-                <img alt="Check&nbsp;out"src="https://cdn-icons-png.flaticon.com/16/3144/3144456.png">
+
+            <!-- Checkout Link with Shifted Icon -->
+            <li class="inline-block list-none float-right">
+              <a href="#" class="float-left text-[12px] text-[#dedede] text-center px-[9px] py-[12px] no-underline hover:bg-[#1e1e1e] hover:text-[#aaa] flex items-center">
+                Checkout
+                <img alt="Check out" src="https://cdn-icons-png.flaticon.com/16/3144/3144456.png" class="ml-4">
                </a>
              </li>
            </strong>
@@ -55,150 +111,86 @@
        </div>
      </header>
     <br>
-    <form id="sq"action="https://store.swedishstudiosgames.com/search"method="POST"class="qf"role="search"aria-label="Site search">
-      <div class="qw">
-        <input id="q"class="qi"type="text"name="q"placeholder="Search the store..."autocomplete="true"aria-label="Search query"required>
-        <button type="button"id="et"class="ib g"aria-label="Toggle web search"aria-pressed="false"title="Search the internet">
-          <svg class="i"viewBox="0 0 24 24"fill="none"aria-hidden="true">
-            <path d="M12 2a10 10 0 1 0 0 20a10 10 0 0 0 0-20Z"stroke="currentColor"stroke-width="1.7"/>
-            <path d="M2 12h20M12 2c-3 3-4.5 7-4.5 10s1.5 7 4.5 10m0-20c3 3 4.5 7 4.5 10s-1.5 7-4.5 10"stroke="currentColor"stroke-width="1.3"/>
-           </svg>
-         </button>
-	    <button type="submit"class="ib q"aria-label="Submit search"title="Search">
-          <svg class="i"viewBox="0 0 24 24"fill="none"aria-hidden="true">
-            <circle cx="11"cy="11"r="7"stroke="currentColor"stroke-width="1.7"/>
-		    <path d="M20 20l-3.5-3.5"stroke="currentColor"stroke-width="1.7"stroke-linecap="round"/>
-	       </svg>
-	     </button>
-       </div>
-     </form>
-    <script src="/root/lib/src/js/search.js"async defer crossorigin="anonymous"></script>
+
+    <!-- SEARCH FORM START -->
+    <!-- Action points to web search by default -->
+    <form id="sq" action="https://search.swedishstudiosgames.com/search" method="POST" class="max-w-[640px] ml-[18%] relative max-[420px]:mx-[5%] max-[420px]:max-w-[90%]" role="search" aria-label="Site search">
+      <div class="relative w-full">
+        
+        <!-- Text Input -->
+        <input id="q" class="w-full p-3 pr-[100px] pl-[14px] border border-[#444] rounded-lg text-base leading-[1.2] transition-all duration-150 bg-[#222] text-[#eee] placeholder-[#888] focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/15 max-[420px]:pr-[86px]" type="text" name="q" placeholder="Search the internet..." autocomplete="off" aria-label="Search query" required>
+        
+        <!-- File Input (Hidden by default) -->
+        <input id="qim" class="w-full p-[9px] px-[14px] pr-[100px] border border-[#444] rounded-lg text-base leading-[1.2] transition-all duration-150 bg-[#222] text-[#eee] hidden cursor-pointer focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/15 max-[420px]:pr-[86px]" type="file" name="encoded_image" accept="image/*">
+
+        <!-- Search Button -->
+        <button type="submit" class="absolute top-1/2 -translate-y-1/2 right-[44px] h-8 w-8 bg-transparent text-[#aaa] rounded-md cursor-pointer inline-flex items-center justify-center transition-colors hover:text-white hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 max-[420px]:right-[48px]" aria-label="Submit search" title="Search">
+          <img class="h-[18px] w-[18px] block" src="assets/search.svg" alt="Search">
+        </button>
+
+        <!-- Menu Button -->
+        <button type="button" id="mb" class="absolute top-1/2 -translate-y-1/2 right-2 h-8 w-8 bg-transparent text-[#aaa] rounded-md cursor-pointer inline-flex items-center justify-center transition-colors hover:text-white hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2" aria-label="Search options" aria-haspopup="true" aria-expanded="false">
+          <img class="h-[18px] w-[18px] block" src="assets/menu.svg" alt="Options">
+        </button>
+
+        <!-- Dropdown Menu -->
+        <div id="mdd" class="hidden absolute right-0 top-full bg-[#2a2a2a] min-w-[180px] shadow-lg z-10 rounded-lg mt-2 border border-[#444] overflow-hidden">
+            <button type="button" data-mode="web" class="flex items-center gap-2.5 bg-[#333] text-blue-500 font-bold w-full text-left p-3 text-sm hover:bg-[#3b3b3b] hover:text-white transition-colors">
+                <img class="h-[18px] w-[18px] block" src="assets/web.svg" alt="Web">
+                Internet Search
+            </button>
+            <button type="button" data-mode="image" class="flex items-center gap-2.5 text-[#dedede] w-full text-left p-3 text-sm hover:bg-[#3b3b3b] hover:text-white transition-colors">
+                <img class="h-[18px] w-[18px] block" src="assets/image.svg" alt="Image">
+                Image Search
+            </button>
+            <button type="button" data-mode="store" class="flex items-center gap-2.5 text-[#dedede] w-full text-left p-3 text-sm hover:bg-[#3b3b3b] hover:text-white transition-colors">
+                <img class="h-[18px] w-[18px] block" src="assets/store.svg" alt="Store">
+                Store Search
+            </button>
+        </div>
+
+      </div>
+    </form>
+    <!-- SEARCH FORM END -->
+
     <br>
-    <div id="s2">
+    
+    <main id="s2" class="bg-[#444] shadow-[1px_1.5px_#333] mx-auto w-[64%] border border-[#101010] text-center" role="main">
       <br>
       <h1>Featured Items In Our Store</h1>
       <br>
-	  <i style="text-align:center;display:inherit;">Under maintenance</i>
-      <section></section>
-      <article></article>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <!-- <div id="ba1">
-	    <em>Recommended Game Server Hosting Provider</em>
-	    <a href="https://zap-hosting.com/swedenstyle34">
-	      <img src="https://zap-hosting.com/interface/download/images.php?type=affiliate&amp;id=397546"alt="ZAP-Hosting Gameserver and Webhosting">
-	     </a>
-       </div>
-      <br>
-      <div id="ba2">
-	    <em>Recommended VPN Provider</em>
-        <a href="https://go.nordvpn.net/SH9HJ">
-	      <img src="https://raw.githubusercontent.com/swedishstudiosgames/ssg-website/refs/heads/master/root/lib/assets/gfx/img/bnr/bgimg/affiliate-new-year-2025-campaign-728x90.png"alt="NordVPN">
-	      <img src="https://go.nordvpn.net/aff_i?offer_id=15&aff_id=114264"width="0"height="0"style="position:absolute;visibility:hidden;"border="0">
-	     </a>
-       </div> -->
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <div id="s3">
+      <i class="block text-center text-[#ccc]">Under maintenance</i>
+      <section class="float-left"></section>
+      <article class="float-right"></article>
+      
+      <!-- Layout Spacing -->
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      
+      <!-- Footer -->
+      <div id="s3" class="bg-[#111] shadow-[1px_1.5px_#333] mx-auto w-auto border border-[#101010] text-center">
         <footer>
           <br>
-          <nav>
-            <ul>
-			  <strong>
-                <li class="ft">
-                  <a href="https://disclaimer.swedishstudiosgames.com">Disclaimer</a>
-				 </li>
-			    <li class="ft">
-                  <a href="https://tos.swedishstudiosgames.com">Terms&nbsp;of&nbsp;Service</a>
-                 </li>
-                <li class="ft">
-                  <a href="https://privacy.swedishstudiosgames.com">Privacy&nbsp;Policy</a>
-                 </li>
-                <li class="ft">
-                  <a href="https://return-and-refund.swedishstudiosgames.com">Return&nbsp;and&nbsp;Refund</a>
-                 </li>
-			    <li class="ft">
-                  <a href="https://contact.swedishstudiosgames.com">Contact&nbsp;Us</a>
-                 </li>
-	           </strong>
+          <nav aria-label="Footer Navigation">
+            <ul class="inline-block list-none">
+              <strong>
+                <li class="float-left mr-4 text-center hover:text-[#333]"><a href="https://disclaimer.swedishstudiosgames.com" class="text-[#eee] no-underline">Disclaimer</a></li>
+                <li class="float-left mr-4 text-center hover:text-[#333]"><a href="https://tos.swedishstudiosgames.com" class="text-[#eee] no-underline">Terms of Service</a></li>
+                <li class="float-left mr-4 text-center hover:text-[#333]"><a href="https://privacy.swedishstudiosgames.com" class="text-[#eee] no-underline">Privacy Policy</a></li>
+                <li class="float-left mr-4 text-center hover:text-[#333]"><a href="https://return-and-refund.swedishstudiosgames.com" class="text-[#eee] no-underline">Return and Refund</a></li>
+                <li class="float-left mr-4 text-center hover:text-[#333]"><a href="https://contact.swedishstudiosgames.com" class="text-[#eee] no-underline">Contact Us</a></li>
+              </strong>
              </ul>
            </nav>
           <br>
-          <em>
-            <strong>Copyright©&nbsp;2008-2025&nbsp;&nbsp;SwedishStudios&nbsp;Games</strong>
-		   </em>
-	      <br>
-	     </footer>
+          <em class="text-[#888]">
+            <strong>Copyright© 2008-2025 SwedishStudios Games</strong>
+           </em>
+          <br>
+         </footer>
        </div>
-     </div>
-    <br>
-    <br>
-    <br>
-   </body>
- </html>
+    </main>
+    <br><br><br>
 
-
-
+    <script src="search.js" defer></script>
+  </body>
+</html>
