@@ -6,10 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const mdd = document.getElementById('mdd'); // mdd = Menu Drop Down
     const mbs = document.querySelectorAll('#mdd button'); // mbs = Mode Buttons
 
-    // Classes for active/inactive states (Tailwind)
-    const activeClasses = ['bg-[#333]', 'text-blue-500', 'font-bold'];
-    const inactiveClasses = ['text-[#dedede]'];
-
     // Mode Configuration
     const ms = {
         store: {
@@ -40,13 +36,13 @@ document.addEventListener('DOMContentLoaded', () => {
         e.stopPropagation();
         const ie = mb.getAttribute('aria-expanded') === 'true';
         mb.setAttribute('aria-expanded', !ie);
-        mdd.classList.toggle('hidden');
+        mdd.classList.toggle('show'); // Toggles the CSS 'show' class which sets display: block
     });
 
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
         if (!mdd.contains(e.target) && !mb.contains(e.target)) {
-            mdd.classList.add('hidden');
+            mdd.classList.remove('show');
             mb.setAttribute('aria-expanded', 'false');
         }
     });
@@ -57,18 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const mk = b.getAttribute('data-mode');
             sm(mk);
             
-            // Reset all buttons to inactive
-            mbs.forEach(btn => {
-                btn.classList.remove(...activeClasses);
-                btn.classList.add(...inactiveClasses);
-            });
+            // Remove 'active' class from all buttons
+            mbs.forEach(btn => btn.classList.remove('active'));
             
-            // Set current button to active
-            b.classList.remove(...inactiveClasses);
-            b.classList.add(...activeClasses);
+            // Add 'active' class to clicked button
+            b.classList.add('active');
             
             // Close menu
-            mdd.classList.add('hidden');
+            mdd.classList.remove('show');
             mb.setAttribute('aria-expanded', 'false');
         });
     });
@@ -83,10 +75,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (c.ii) {
             // Image Mode
-            ti.classList.add('hidden');
+            ti.classList.add('hidden'); // Using CSS utility class
             ti.disabled = true;
             
-            fi.classList.remove('hidden');
+            fi.classList.remove('hidden'); // Using CSS utility class
             fi.disabled = false;
         } else {
             // Text Mode
