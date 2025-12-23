@@ -6,9 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const mdd = document.getElementById('mdd'); // mdd = Menu Drop Down
     const mbs = document.querySelectorAll('#mdd button'); // mbs = Mode Buttons
 
+    // State to track current mode and recognition instance
+    let currentMode = 'web';
+    let recognition = null;
+
     // Inject hidden input for 'image_url' required by Google's endpoint
-    // Google expects this field to exist (even if empty) when uploading a file.
-    if (f) {
+    if (f && !f.querySelector('input[name="image_url"]')) {
         const hiddenUrl = document.createElement('input');
         hiddenUrl.type = 'hidden';
         hiddenUrl.name = 'image_url';
@@ -22,25 +25,27 @@ document.addEventListener('DOMContentLoaded', () => {
             ph: 'Search the store...',
             m: 'POST',
             e: 'application/x-www-form-urlencoded',
-            ii: false
+            ii: false,
+            isSpeech: false
         },
         web: {
             a: 'https://search.swedishstudiosgames.com/search',
             ph: 'Search the internet...',
             m: 'POST',
             e: 'application/x-www-form-urlencoded',
-            ii: false
+            ii: false,
+            isSpeech: false
         },
         image: {
-            // Updated to images.google.com for better reliability
             a: 'https://images.google.com/searchbyimage/upload',
             ph: 'Upload an image...',
             m: 'POST',
             e: 'multipart/form-data',
-            ii: true
+            ii: true,
+            isSpeech: false
         },
         speech: {
-            a: 'https://search.swedishstudiosgames.com/search', // Default to web search
+            a: 'https://search.swedishstudiosgames.com/search',
             ph: 'Speak to search...',
             m: 'POST',
             e: 'application/x-www-form-urlencoded',
@@ -71,20 +76,35 @@ document.addEventListener('DOMContentLoaded', () => {
             const mk = b.getAttribute('data-mode');
             sm(mk);
             
-            // Remove 'active' class from all buttons
             mbs.forEach(btn => btn.classList.remove('active'));
-            
-            // Add 'active' class to clicked button
             b.classList.add('active');
             
-            // Close menu
             mdd.classList.remove('show');
             mb.setAttribute('aria-expanded', 'false');
         });
     });
 
+    // Helper: Stop active recognition if any
+    function stopRecognition() {
+        if (recognition) {
+            // Important: clear the onend handler to prevent it from resetting the UI 
+            // if we are immediately starting a new session or switching modes.
+            recognition.onend = null;
+            try {
+                recognition.stop();
+            } catch (e) {
+                // Ignore if already stopped
+            }
+            recognition = null;
+        }
+    }
+
     function sm(k) {
+        currentMode = k;
         const c = ms[k];
+
+        // Stop any ongoing speech recognition when changing modes
+        stopRecognition();
 
         // Update Form Attributes
         f.action = c.a;
@@ -94,63 +114,83 @@ document.addEventListener('DOMContentLoaded', () => {
         if (c.ii) {
             // Image Mode
             ti.classList.add('hidden');
-            ti.disabled = true; // IMPORTANT: Disable text input so it's not sent
-            
+            ti.disabled = true;
             fi.classList.remove('hidden');
             fi.disabled = false;
         } else {
-            // Text Mode
+            // Text/Speech Mode
             fi.classList.add('hidden');
             fi.disabled = true;
-
             ti.classList.remove('hidden');
             ti.disabled = false;
             ti.placeholder = c.ph;
             ti.focus();
         }
 
-        // Trigger Speech Recognition if Speech Mode
         if (c.isSpeech) {
             startDictation();
         }
     }
 
     function startDictation() {
-        if (window.webkitSpeechRecognition || window.SpeechRecognition) {
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            const recognition = new SpeechRecognition();
-            
-            recognition.continuous = false;
-            recognition.interimResults = false;
-            recognition.lang = "en-US";
-            
-            // Visual cue that listening has started
-            ti.placeholder = "Listening...";
-            
-            recognition.start();
+        // "Rely on Google's feature": Chrome uses Google's servers for Web Speech API.
+        // This check ensures we use the correct prefixed version.
+        if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+            alert("Speech to text is not supported in this browser.");
+            return;
+        }
 
-            recognition.onresult = function(e) {
-                if (e.results.length > 0) {
-                    ti.value = e.results[0][0].transcript;
-                }
-                recognition.stop();
-            };
-            
-            recognition.onerror = function(e) {
-                console.error("Speech recognition error", e);
-                ti.placeholder = "Error. Please type...";
-                recognition.stop();
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        
+        stopRecognition(); // Ensure fresh instance
+        recognition = new SpeechRecognition();
+
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.lang = "en-US";
+
+        recognition.onstart = function() {
+            ti.placeholder = "Listening... (Speak now)";
+        };
+
+        recognition.onresult = function(e) {
+            if (e.results.length > 0) {
+                ti.value = e.results[0][0].transcript;
+                // Optional: Automatically submit form after speech
+                // f.submit(); 
             }
-            
-            recognition.onend = function() {
-                // Restore placeholder if empty
-                if (!ti.value) {
-                    ti.placeholder = "Speak to search...";
-                }
+        };
+
+        recognition.onerror = function(e) {
+            console.error("Speech error:", e);
+            let msg = "Error occurred.";
+            if (e.error === 'not-allowed') {
+                msg = "Microphone blocked. Check permissions.";
+            } else if (e.error === 'no-speech') {
+                msg = "No speech detected. Try again.";
             }
-        } else {
-            console.warn("Speech to text is not supported in this browser.");
-            ti.placeholder = "Speech not supported.";
+            ti.placeholder = msg;
+        };
+
+        recognition.onend = function() {
+            recognition = null;
+            // Only reset placeholder if it still has the "Listening" or error state and no value
+            if (!ti.value && (ti.placeholder.includes("Listening") || ti.placeholder.includes("Error"))) {
+                ti.placeholder = "Click here to speak again...";
+            }
+        };
+
+        try {
+            recognition.start();
+        } catch (e) {
+            console.error("Failed to start recognition:", e);
         }
     }
+    
+    // Allow restarting dictation by clicking the input if in speech mode
+    ti.addEventListener('click', () => {
+        if (currentMode === 'speech' && !recognition) {
+             startDictation();
+        }
+    });
 });
