@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             isSpeech: false
         },
         image: {
-            a: 'https://www.google.com/search',
+            a: 'https://images.google.com/searchbyimage/upload',
             ph: 'Upload an image...',
             m: 'POST',
             e: 'multipart/form-data',
