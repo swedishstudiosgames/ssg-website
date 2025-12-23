@@ -6,6 +6,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const mdd = document.getElementById('mdd'); // mdd = Menu Drop Down
     const mbs = document.querySelectorAll('#mdd button'); // mbs = Mode Buttons
 
+    // Inject hidden input for 'image_url' required by Google's endpoint
+    // Google expects this field to exist (even if empty) when uploading a file.
+    if (f) {
+        const hiddenUrl = document.createElement('input');
+        hiddenUrl.type = 'hidden';
+        hiddenUrl.name = 'image_url';
+        f.appendChild(hiddenUrl);
+    }
+
     // Mode Configuration
     const ms = {
         store: {
@@ -23,9 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
             ii: false
         },
         image: {
-            a: 'https://www.google.com/searchbyimage/upload', // Added www. to prevent redirect issues
+            // Updated to images.google.com for better reliability
+            a: 'https://images.google.com/searchbyimage/upload',
             ph: 'Upload an image...',
-            m: 'GET',
+            m: 'POST',
             e: 'multipart/form-data',
             ii: true
         }
@@ -36,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.stopPropagation();
         const ie = mb.getAttribute('aria-expanded') === 'true';
         mb.setAttribute('aria-expanded', !ie);
-        mdd.classList.toggle('show'); // Toggles the CSS 'show' class which sets display: block
+        mdd.classList.toggle('show');
     });
 
     // Close menu when clicking outside
@@ -75,10 +85,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (c.ii) {
             // Image Mode
-            ti.classList.add('hidden'); // Using CSS utility class
-            ti.disabled = true;
+            ti.classList.add('hidden');
+            ti.disabled = true; // IMPORTANT: Disable text input so it's not sent
             
-            fi.classList.remove('hidden'); // Using CSS utility class
+            fi.classList.remove('hidden');
             fi.disabled = false;
         } else {
             // Text Mode
