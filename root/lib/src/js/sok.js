@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             isSpeech: false
         },
         image: {
+            // Using www.google.com for reliable file upload handling
             a: 'https://www.google.com/searchbyimage/upload',
             ph: 'Upload an image...',
             m: 'POST',
@@ -87,8 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Helper: Stop active recognition if any
     function stopRecognition() {
         if (recognition) {
-            // Important: clear the onend handler to prevent it from resetting the UI 
-            // if we are immediately starting a new session or switching modes.
             recognition.onend = null;
             try {
                 recognition.stop();
@@ -133,8 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function startDictation() {
-        // "Rely on Google's feature": Chrome uses Google's servers for Web Speech API.
-        // This check ensures we use the correct prefixed version.
         if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
             alert("Speech to text is not supported in this browser.");
             return;
@@ -156,8 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
         recognition.onresult = function(e) {
             if (e.results.length > 0) {
                 ti.value = e.results[0][0].transcript;
-                // Optional: Automatically submit form after speech
-                // f.submit(); 
             }
         };
 
@@ -174,7 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         recognition.onend = function() {
             recognition = null;
-            // Only reset placeholder if it still has the "Listening" or error state and no value
             if (!ti.value && (ti.placeholder.includes("Listening") || ti.placeholder.includes("Error"))) {
                 ti.placeholder = "Click here to speak again...";
             }
