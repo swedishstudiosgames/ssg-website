@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let recognition = null;
 
     // Inject hidden input for 'image_url' required by Google's endpoint
+    // Google expects this field to exist (even if empty) when uploading a file.
     if (f && !f.querySelector('input[name="image_url"]')) {
         const hiddenUrl = document.createElement('input');
         hiddenUrl.type = 'hidden';
@@ -37,7 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
             isSpeech: false
         },
         image: {
-            a: 'https://images.google.com/searchbyimage/upload',
+            // Using the robust legacy endpoint which handles uploads well
+            a: 'https://www.google.com/searchbyimage/upload',
             ph: 'Upload an image...',
             m: 'POST',
             e: 'multipart/form-data',
@@ -45,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             isSpeech: false
         },
         speech: {
-            a: 'https://search.swedishstudiosgames.com/search',
+            a: 'https://search.swedishstudiosgames.com/search', // Default to web search logic
             ph: 'Speak to search...',
             m: 'POST',
             e: 'application/x-www-form-urlencoded',
@@ -87,9 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Helper: Stop active recognition if any
     function stopRecognition() {
         if (recognition) {
-            // Important: clear the onend handler to prevent it from resetting the UI 
-            // if we are immediately starting a new session or switching modes.
-            recognition.onend = null;
+            recognition.onend = null; // Prevent triggers
             try {
                 recognition.stop();
             } catch (e) {
@@ -114,13 +114,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (c.ii) {
             // Image Mode
             ti.classList.add('hidden');
-            ti.disabled = true;
+            ti.disabled = true; // IMPORTANT: Disable text input so it's not sent to Google
             fi.classList.remove('hidden');
             fi.disabled = false;
         } else {
             // Text/Speech Mode
             fi.classList.add('hidden');
-            fi.disabled = true;
+            fi.disabled = true; // Disable file input
             ti.classList.remove('hidden');
             ti.disabled = false;
             ti.placeholder = c.ph;
@@ -133,8 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function startDictation() {
-        // "Rely on Google's feature": Chrome uses Google's servers for Web Speech API.
-        // This check ensures we use the correct prefixed version.
         if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
             alert("Speech to text is not supported in this browser.");
             return;
@@ -156,8 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
         recognition.onresult = function(e) {
             if (e.results.length > 0) {
                 ti.value = e.results[0][0].transcript;
-                // Optional: Automatically submit form after speech
-                // f.submit(); 
             }
         };
 
@@ -165,16 +161,15 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error("Speech error:", e);
             let msg = "Error occurred.";
             if (e.error === 'not-allowed') {
-                msg = "Microphone blocked. Check permissions.";
+                msg = "Microphone blocked.";
             } else if (e.error === 'no-speech') {
-                msg = "No speech detected. Try again.";
+                msg = "No speech detected.";
             }
             ti.placeholder = msg;
         };
 
         recognition.onend = function() {
             recognition = null;
-            // Only reset placeholder if it still has the "Listening" or error state and no value
             if (!ti.value && (ti.placeholder.includes("Listening") || ti.placeholder.includes("Error"))) {
                 ti.placeholder = "Click here to speak again...";
             }
