@@ -129,8 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
                  // Redirect to store search (Example URL)
                  window.location.href = `https://store.swedishstudiosgames.com/search?q=${encodeURIComponent(query)}`;
             } else {
-                 // Default Google Web Search
-                 window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+                 // Default BEX Web Search
+                 window.location.href = `https://search.swedishstudiosgames.com/search?q=${encodeURIComponent(query)}`;
             }
         }
     });
