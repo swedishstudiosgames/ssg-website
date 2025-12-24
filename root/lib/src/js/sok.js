@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentMode = 'web';
     let recognition = null;
 
-    // Inject hidden input for 'image_url' required by Google's endpoint
+    // Inject hidden input for 'image_url' required by some Google endpoints (legacy/backup)
     if (f && !f.querySelector('input[name="image_url"]')) {
         const hiddenUrl = document.createElement('input');
         hiddenUrl.type = 'hidden';
@@ -37,8 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
             isSpeech: false
         },
         image: {
-            // Using www.google.com for reliable file upload handling
-            a: 'https://www.google.com/searchbyimage/upload',
+            // Google Lens Upload Endpoint
+            // Note: The action URL is further modified in the submit listener to add timestamps
+            a: 'https://lens.google.com/upload',
             ph: 'Upload an image...',
             m: 'POST',
             e: 'multipart/form-data',
@@ -54,6 +55,15 @@ document.addEventListener('DOMContentLoaded', () => {
             isSpeech: true
         }
     };
+
+    // Update action with timestamp on submit for Google Lens
+    // Lens requires 'ep' and 'st' (timestamp) parameters to accept the POST
+    f.addEventListener('submit', () => {
+        if (currentMode === 'image') {
+            const timestamp = Date.now();
+            f.action = `https://lens.google.com/upload?ep=ccm&s=&st=${timestamp}`;
+        }
+    });
 
     // Toggle Menu
     mb.addEventListener('click', (e) => {
@@ -116,10 +126,17 @@ document.addEventListener('DOMContentLoaded', () => {
             ti.disabled = true;
             fi.classList.remove('hidden');
             fi.disabled = false;
+            
+            // CRITICAL: Google Lens expects the file input name to be 'encoded_image'
+            fi.name = 'encoded_image';
         } else {
             // Text/Speech Mode
             fi.classList.add('hidden');
             fi.disabled = true;
+            
+            // Reset to generic name when not in image mode
+            fi.name = 'file'; 
+            
             ti.classList.remove('hidden');
             ti.disabled = false;
             ti.placeholder = c.ph;
