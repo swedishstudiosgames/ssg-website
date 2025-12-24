@@ -6,14 +6,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const mdd = document.getElementById('mdd'); // mdd = Menu Drop Down
     const mbs = document.querySelectorAll('#mdd button'); // mbs = Mode Buttons
 
+    // State to track current mode and recognition instance
+    let currentMode = 'web';
     let recognition = null;
 
     // Inject hidden input for 'image_url' required by Google's endpoint
     if (f && !f.querySelector('input[name="image_url"]')) {
-        const h = document.createElement('input');
-        h.type = 'hidden';
-        h.name = 'image_url';
-        f.appendChild(h);
+        const hiddenUrl = document.createElement('input');
+        hiddenUrl.type = 'hidden';
+        hiddenUrl.name = 'image_url';
+        f.appendChild(hiddenUrl);
     }
 
     // Mode Configuration
@@ -35,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
             isSpeech: false
         },
         image: {
-            // Using the legacy Google upload endpoint which is most robust for forms
             a: 'https://www.google.com/searchbyimage/upload',
             ph: 'Upload an image...',
             m: 'POST',
@@ -56,91 +57,140 @@ document.addEventListener('DOMContentLoaded', () => {
     // Toggle Menu
     mb.addEventListener('click', (e) => {
         e.stopPropagation();
-        const ex = mb.getAttribute('aria-expanded') === 'true';
-        mb.setAttribute('aria-expanded', !ex);
+        const ie = mb.getAttribute('aria-expanded') === 'true';
+        mb.setAttribute('aria-expanded', !ie);
         mdd.classList.toggle('show');
     });
 
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (mdd && !mdd.contains(e.target) && !mb.contains(e.target)) {
+        if (!mdd.contains(e.target) && !mb.contains(e.target)) {
             mdd.classList.remove('show');
             mb.setAttribute('aria-expanded', 'false');
         }
     });
-
-    // Helper: Stop recognition cleanly
-    const stopRec = () => {
-        if (recognition) {
-            recognition.onend = null;
-            try { recognition.stop(); } catch (e) {}
-            recognition = null;
-        }
-    };
 
     // Handle Mode Selection
     mbs.forEach(b => {
         b.addEventListener('click', () => {
             const mk = b.getAttribute('data-mode');
-            const c = ms[mk];
+            sm(mk);
             
-            stopRec();
-
-            // Update UI Active State
             mbs.forEach(btn => btn.classList.remove('active'));
             b.classList.add('active');
+            
             mdd.classList.remove('show');
             mb.setAttribute('aria-expanded', 'false');
-
-            // Update Form Attributes
-            f.action = c.a;
-            f.method = c.m;
-            f.enctype = c.e;
-
-            // Toggle Inputs
-            if (c.ii) {
-                ti.classList.add('hidden');
-                ti.disabled = true; // Disable text so it's not sent
-                fi.classList.remove('hidden');
-                fi.disabled = false;
-            } else {
-                fi.classList.add('hidden');
-                fi.disabled = true;
-                ti.classList.remove('hidden');
-                ti.disabled = false;
-                ti.placeholder = c.ph;
-                ti.focus();
-            }
-
-            // Start Speech
-            if (c.isSpeech) {
-                if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-                    alert("Speech not supported.");
-                    return;
-                }
-                const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-                recognition = new SR();
-                recognition.continuous = false;
-                recognition.interimResults = false;
-                recognition.lang = "en-US";
-                
-                recognition.onstart = () => { ti.placeholder = "Listening..."; };
-                recognition.onresult = (e) => { 
-                    if(e.results.length > 0) ti.value = e.results[0][0].transcript; 
-                };
-                recognition.onerror = () => { ti.placeholder = "Error. Try again."; };
-                recognition.onend = () => { recognition = null; };
-                
-                try { recognition.start(); } catch(e) {}
-            }
         });
     });
+
+    // Helper: Stop active recognition if any
+    function stopRecognition() {
+        if (recognition) {
+            // Important: clear the onend handler to prevent it from resetting the UI 
+            // if we are immediately starting a new session or switching modes.
+            recognition.onend = null;
+            try {
+                recognition.stop();
+            } catch (e) {
+                // Ignore if already stopped
+            }
+            recognition = null;
+        }
+    }
+
+    function sm(k) {
+        currentMode = k;
+        const c = ms[k];
+
+        // Stop any ongoing speech recognition when changing modes
+        stopRecognition();
+
+        // Update Form Attributes
+        f.action = c.a;
+        f.method = c.m;
+        f.enctype = c.e;
+
+        if (c.ii) {
+            // Image Mode
+            ti.classList.add('hidden');
+            ti.disabled = true;
+            fi.classList.remove('hidden');
+            fi.disabled = false;
+        } else {
+            // Text/Speech Mode
+            fi.classList.add('hidden');
+            fi.disabled = true;
+            ti.classList.remove('hidden');
+            ti.disabled = false;
+            ti.placeholder = c.ph;
+            ti.focus();
+        }
+
+        if (c.isSpeech) {
+            startDictation();
+        }
+    }
+
+    function startDictation() {
+        // "Rely on Google's feature": Chrome uses Google's servers for Web Speech API.
+        // This check ensures we use the correct prefixed version.
+        if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+            alert("Speech to text is not supported in this browser.");
+            return;
+        }
+
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        
+        stopRecognition(); // Ensure fresh instance
+        recognition = new SpeechRecognition();
+
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.lang = "en-US";
+
+        recognition.onstart = function() {
+            ti.placeholder = "Listening... (Speak now)";
+        };
+
+        recognition.onresult = function(e) {
+            if (e.results.length > 0) {
+                ti.value = e.results[0][0].transcript;
+                // Optional: Automatically submit form after speech
+                // f.submit(); 
+            }
+        };
+
+        recognition.onerror = function(e) {
+            console.error("Speech error:", e);
+            let msg = "Error occurred.";
+            if (e.error === 'not-allowed') {
+                msg = "Microphone blocked. Check permissions.";
+            } else if (e.error === 'no-speech') {
+                msg = "No speech detected. Try again.";
+            }
+            ti.placeholder = msg;
+        };
+
+        recognition.onend = function() {
+            recognition = null;
+            // Only reset placeholder if it still has the "Listening" or error state and no value
+            if (!ti.value && (ti.placeholder.includes("Listening") || ti.placeholder.includes("Error"))) {
+                ti.placeholder = "Click here to speak again...";
+            }
+        };
+
+        try {
+            recognition.start();
+        } catch (e) {
+            console.error("Failed to start recognition:", e);
+        }
+    }
     
-    // Restart speech on click if in speech mode
+    // Allow restarting dictation by clicking the input if in speech mode
     ti.addEventListener('click', () => {
-        if (document.querySelector('button[data-mode="speech"].active') && !recognition) {
-             // Logic to restart would go here, effectively selecting speech mode again
-             document.querySelector('button[data-mode="speech"]').click();
+        if (currentMode === 'speech' && !recognition) {
+             startDictation();
         }
     });
 });
