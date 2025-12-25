@@ -108,8 +108,7 @@ header div nav li { display: inline-block; list-style-type: none; }
 
 /* --- Search Bar (Dark Mode) --- */
 .qf {
-    max-width: 640px;
-    margin-left: 18%;
+    margin: auto 18%;
     position: relative;
     /* Responsive margins */
 }
@@ -138,10 +137,6 @@ header div nav li { display: inline-block; list-style-type: none; }
     outline: none;
     border-color: #3b82f6;
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
-}
-
-#sb {
-    margin: auto 18%;
 }
 
 /* File Input Specifics */
